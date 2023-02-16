@@ -3,6 +3,6 @@
 int main (void){
 	
 	/*this function prints out a discription for programming*/
-	puts("\"Programming is like building a multilingual puzzle\n");
-	
+	puts("\"Programming is like building a multilingual puzzle");
+	return(0);
 }
