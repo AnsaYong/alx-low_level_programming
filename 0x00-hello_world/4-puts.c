@@ -1,7 +1,11 @@
 #include <stdio.h>
 
 
-/* this function prints out a discription for programming */
+/**
+ *
+ *  this function prints out a discription for programming 
+ *
+ */
 
 
 int main(void)
