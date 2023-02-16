@@ -3,7 +3,7 @@
 /**
  * main: displays the size of specified variables
  *
- * Returns: 0
+ * Return: 0
  *
  */
 int main(void)
@@ -21,6 +21,6 @@ int main(void)
 	printf("Size of an int: %zu byte(s)\n", sizeof(intType));
 	printf("Size of a long int: %zu byte(s)\n", sizeof(longInt));
 	printf("Size of a long long int: %zu byte(s)\n", sizeof(longlongInt));
-	printf("Size of float: %zu byte(s)\n", sizeof(floatType));
+	printf("Size of a float: %zu byte(s)\n", sizeof(floatType));
 	return (0);
 }
