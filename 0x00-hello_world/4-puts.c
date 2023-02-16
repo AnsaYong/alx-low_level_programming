@@ -1,7 +1,13 @@
 #include <stdio.h>
 
+/**
+ * main - explains programming
+ *
+ * Return: 0
+ *
+ */
 int main(void)	
-/* this function prints out a description for programming */
+
 {
 
 	puts("\"Programming is like building a multilingual puzzle");
