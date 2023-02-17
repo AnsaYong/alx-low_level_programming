@@ -3,7 +3,6 @@
 #include <stdio.h>
 
 /**
- *
  * main - assigns a random number to a variable and
  *	determines the last number.
  *
