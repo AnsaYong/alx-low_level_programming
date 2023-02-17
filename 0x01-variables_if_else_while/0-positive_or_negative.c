@@ -2,10 +2,10 @@
 #include <time.h>
 #include <stdio.h>
 
-/*
+/**
  * main - assigns a random number to variable n
- * 	and then decides whether it is positive,
- * 	negative, or zero.
+ *	and then decides whether it is positive,
+ *	negative, or zero.
  *
  * Return: 0
  *
