@@ -20,8 +20,6 @@ int main(void)
 		putchar(al1);
 		al1++;
 	}
-	
-	
 	while (al2 <= 'Z')
 	{
 		putchar(al2);
