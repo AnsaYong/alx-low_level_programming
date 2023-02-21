@@ -6,7 +6,7 @@
  * Return: void
  *
  */
-void print_alphabet(void);
+void print_alphabet(void)
 {
 	int n = 'a';
 	while (n <= 'z')
