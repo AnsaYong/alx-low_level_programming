@@ -1,4 +1,4 @@
-#include "main.c"
+#include "main.h"
 
 /**
  * jack_bauer(void) - prints every minute of the day of Jack
