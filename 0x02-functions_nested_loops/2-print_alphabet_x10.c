@@ -11,7 +11,7 @@ void print_alphabet_x10(void)
 
 	while (a < 10)
 	{
-		for (int lett = 'a'; lett <= 'z'; lett++)
+		for (lett = 'a'; lett <= 'z'; lett++)
 		{
 			_putchar(lett);
 		}
