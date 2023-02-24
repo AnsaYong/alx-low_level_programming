@@ -8,10 +8,10 @@
 
 #include <stdio.h>
 
-int main(voi)
+int main(void)
 {
-	long long number = 612852475143;
-	long long factor = 2;
+	long number = 612852475143;
+	long factor = 2;
 
 	while (factor * factor <= number)
 	{
@@ -25,7 +25,7 @@ int main(voi)
 		}
 	}
 	
-	printf("%lld\n", number);
+	printf("%ld\n", number);
 	
 	return (0);
 }
