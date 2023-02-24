@@ -20,10 +20,6 @@ void print_diagonal(int n)
 				_putchar (' ');
 			}
 			_putchar ('\\');
-			/*if (i != j)*/
-			/*{*/
-			/*	_putchar ('\n');*/
-			/*}*/
 			_putchar ('\n');
 		}
 	}
