@@ -18,14 +18,14 @@ char *rot13(char *str)
 			if ((str[i] >= 97 && str[i] <= 109) || (str[i] >= 65 && str[i] <= 77))
 			{
 				str[i] += 13;
-				break
+				break;
 			}
 
 			str[i] -= 13;
 			break;
 		}
 
-		i++
+		i++;
 	}
 
 	return (str);
