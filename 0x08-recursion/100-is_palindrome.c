@@ -33,10 +33,7 @@ int is_palindrome_helper(char *s, int left, int right)
 
 int is_palindrome(char *s)
 {
-	int len = 0;
-
-	while (s[len] != '\0')
-		len++;
+	int len = strlen(s);
 
 	return (is_palindrome_helper(s, 0, len - 1));
 }
