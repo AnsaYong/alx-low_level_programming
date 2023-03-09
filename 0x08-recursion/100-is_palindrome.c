@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <string.h>
 
 /**
  * is_palindrome - a function that determines palindromity

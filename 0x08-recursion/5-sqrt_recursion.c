@@ -16,14 +16,14 @@
 
 int sqrt_helper(int x, int left, int right)
 {
-	int mid = left + (right - left) / 2;
-	int square = mid * mid;
-	int result = sqrt_helper(x, mid + 1, right);
-
 	if (left > right)
 	{
 		return (-1);  /* Return -1 if no integer square root exists */
 	}
+
+	int mid = left + (right - left) / 2;
+	int square = mid * mid;
+	int result = sqrt_helper(x, mid + 1, right);
 	
 	if (square == x)
 	{
