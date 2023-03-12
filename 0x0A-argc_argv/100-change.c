@@ -12,9 +12,7 @@
 
 int main(int argc, char *argv[])
 {
-	int coins = 0;
-	int rem = 0;
-	int n;
+	int cents, coins = 0;
 
 	if (argc != 2)
 	{
@@ -22,45 +20,34 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	n = atoi(argv[1]);
-	coins = n / 25;
-	rem = n % 25;
+	cents = atoi(argv[1]);
 
-	if (rem == 0)
+	while (cents > 0)
 	{
-		return (coins);
+		coins++;
+		if ((cents - 25) >= 0)
+		{
+			cents -= 25;
+			continue;
+		}
+		if ((cents - 10) >= 0)
+		{
+			cents -= 10;
+			continue;
+		}
+		if ((cents - 5) >= 0)
+		{
+			cents -= 5;
+			continue;
+		}
+		if ((cents -2) >= 0)
+		{
+			cents -= 2;
+			continue;
+		}
+		cents--;
 	}
-	else
-	{
-		coins += rem / 10;
-		rem = rem / 10;
-	}
-	if (rem == 0)
-	{
-		return (coins);
-	}
-	else
-	{
-		coins += rem / 5;
-		rem = rem / 5;
-	}
-	if (rem == 0)
-	{
-		return (coins);
-	}
-        else
-	{
-		coins += rem / 2;
-		rem = rem / 2;
-	}
-	if (rem == 0)
-        {
-	        return (coins);
-	}
-        else
-	{
-	        coins += rem / 1;
-                rem = rem / 1;
-		return (coins);
-	}
+	printf("%d\n", coins);
+
+	return (0);
 }
