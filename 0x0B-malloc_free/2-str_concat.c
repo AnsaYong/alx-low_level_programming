@@ -15,6 +15,8 @@ char *str_concat(char *s1, char *s2)
 	int j = 0;
 	int k, l;
 
+	l = 0;
+
 	while (s1[i] != '\0')
 		i++;
 
@@ -29,8 +31,12 @@ char *str_concat(char *s1, char *s2)
 	for (k = 0; k < i; k++)
 		arr[k] = s1[k];
 
-	for (l = 0; k < i + j, l < j; k++, l++)
-		arr[k] = s2[l];
+	for (k < i + j; k++)
+	{
+		if (l < j)
+			arr[k] = s2[l];
+		l++;
+	}
 
 	arr[k] = '\0';
 
