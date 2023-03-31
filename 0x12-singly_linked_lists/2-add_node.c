@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 #include "lists.h"
 
 /**
@@ -35,7 +36,7 @@ list_t *add_node(list_t **head, const char *str)
 			return (NULL);
 		temp->str = strdup(str);
 		temp->len = len;
-		temp->(*head); /* copy the contents of head to link of new node */
+		temp->next = (*head); /* copy the contents of head to link of new node */
 		(*head) = temp;	/* update head to the address of the new node */
 	}
 	return (*head);
