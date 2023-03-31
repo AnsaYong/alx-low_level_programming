@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "lists.h"
 
 /**
@@ -5,7 +6,7 @@
  * @list_t: structure of the list nodes
  * @head: pointer to the head of a linked list
  */
-void free_list(list_t, *head)
+void free_list(list_t *head)
 {
 	list_t *current;
 
