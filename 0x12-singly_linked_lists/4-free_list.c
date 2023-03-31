@@ -3,7 +3,6 @@
 
 /**
  * free_list - frees up memory created for a list_t list
- * @list_t: structure of the list nodes
  * @head: pointer to the head of a linked list
  */
 void free_list(list_t *head)
