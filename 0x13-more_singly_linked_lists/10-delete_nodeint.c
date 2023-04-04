@@ -4,7 +4,7 @@
 /**
  * delete_nodeint_at_index - deletes the node at a given position
  * @head: pointer to first node of linked list
- * @idx: index at which to delete node
+ * @index: index at which to delete node
  *
  * Return: 1 if succeeded, -1 if failed.
  */
@@ -35,7 +35,7 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	}
 
 	temp2 = temp1->next;	/* copy what temp1 is pointing to, to temp2 */
-	if (temp1->next->next == NULL)	/* if no node exists after the specified index */
+	if (temp1->next->next == NULL)	/* if no node after the specified index */
 		temp1->next = NULL;	/* update the link before the index to NULL */
 	else	/* if atleast 1 node exists after the index */
 		temp1->next = temp1->next->next;	/* update link pointed to */
