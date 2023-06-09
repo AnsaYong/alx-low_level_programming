@@ -2,6 +2,8 @@
 
 /**
  * main - prints the name of a program
+ * @argc: stores the number of arguments passed to the function
+ * @argv: stores the arguments passe to the function
  *
  * Return: 0 on success and 1 on failure
  */
