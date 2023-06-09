@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * main - multiplies 2 numbers
+ * main - adds positive numbers
  * @argc: stores the number of arguments passed
  * @argv: stores the arguments passed
  *
@@ -10,11 +10,20 @@
  */
 int main(int argc, char *argv[])
 {
-	if (argc != 3)
+	int sum = 0;
+	int i = 1;
+
+	while (i < argc)
 	{
-		printf("Error\n");
-		return (1);
+		if (*argv[i] >= 48 && *argv[i] <= 57)
+			sum += atoi(argv[i]);
+		else
+		{
+			printf("Error\n");
+			return (1);
+		}
+		i++;
 	}
-	printf("%d\n", (atoi(argv[1]) * atoi(argv[2])));
+	printf("%d\n", sum);
 	return (0);
 }
