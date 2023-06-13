@@ -15,7 +15,7 @@ char *argstostr(int ac, char **av)
 {
 	char *concatenate;
 	int i, j, k;
-	int len[80];	/* an array to store the len of each argument */
+	int len[6000];	/* an array to store the len of each argument */
 	int size = 0;	/* int var to store size of memory required */
 
 	if (ac == 0 || av == NULL)
@@ -31,7 +31,7 @@ char *argstostr(int ac, char **av)
 	}
 
 	/* allocate memory for new string */
-	concatenate = malloc(sizeof(char) * (size + ac));
+	concatenate = malloc(sizeof(char) * (size + ac + 1));
 	if (concatenate == NULL)
 		return (NULL);
 
@@ -48,6 +48,7 @@ char *argstostr(int ac, char **av)
 		concatenate[k++] = '\n';
 		i++;
 	}
+	concatenate[k] = '\0';
 
 	return (concatenate);
 }
