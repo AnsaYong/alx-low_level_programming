@@ -19,12 +19,15 @@ int **alloc_grid(int width, int height)
 
 	/* first create rows which will be pointers to int pointers */
 	grid_arr = malloc(height * sizeof(int *));
-	/* then create columns which will be int pointers */
-	for (i = 0; i < height; i++)
-		grid_arr[i] = malloc(width * sizeof(int));
-
 	if (grid_arr == NULL)
 		return (NULL);
+	/* then create columns which will be int pointers */
+	for (i = 0; i < height; i++)
+	{
+		grid_arr[i] = malloc(width * sizeof(int));
+		if (grid_arr[i] == NULL)
+			return (NULL);
+	}
 
 	/* initializing array */
 	for (i = 0; i < height; i++)
