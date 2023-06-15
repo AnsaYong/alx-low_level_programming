@@ -1,7 +1,7 @@
 # 0x0C. C - More malloc, free
 
-This directory contains functions written during the malloc, calloc, free course of the the ALX SE programme. The following 
-files are included:
+This directory contains functions written during the malloc, calloc, free course of the the ALX SE programme.
+The following files are included:
 
 - 101-mul.c: a program that multiplies two positive numbers.
 - 100-realloc.c: a function that reallocates a memory block using malloc and free
