@@ -23,7 +23,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	if (allocated_mem == NULL)
 		return (NULL);
 
-	char_mem = (char *)allocated_mem; /* void pointer cannot be initialized */
+	char_mem = allocated_mem; /* void pointer cannot be initialized */
 	while (i < nmemb)
 	{
 		char_mem[i] = 0;
