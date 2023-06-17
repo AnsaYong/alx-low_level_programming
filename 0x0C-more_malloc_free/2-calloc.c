@@ -12,9 +12,9 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	void *allocated_mem;
+	char *allocated_mem;
 	unsigned int i = 0;
-	char *numb_mem;
+	//char *numb_mem;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
@@ -23,10 +23,10 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	if (allocated_mem == NULL)
 		return (NULL);
 
-	numb_mem = allocated_mem; /* void pointer cannot be initialized */
+	//numb_mem = allocated_mem; /* void pointer cannot be initialized */
 	while (i < nmemb)
 	{
-		numb_mem[i] = 0;
+		allocated_mem[i] = 0;
 		i++;
 	}
 	return (allocated_mem);
