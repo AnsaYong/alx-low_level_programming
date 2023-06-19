@@ -3,6 +3,9 @@
 
 /**
  * struct dog - a struct dog containing the dog's name, age, and owner.
+ * @name: dog name
+ * @age: dog age
+ * @owner: dog owner
  */
 struct dog
 {
