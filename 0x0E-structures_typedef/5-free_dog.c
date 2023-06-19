@@ -3,6 +3,7 @@
 
 /**
  * free_dog - frees struct pointer
+ * @d: struct dog pointer
  */
 void free_dog(dog_t *d)
 {

@@ -2,9 +2,10 @@
 #define DOG_H
 
 /**
- * dog - a struct dog containing the dog's name, age, and owner.
+ * struct dog - a struct dog containing the dog's name, age, and owner.
  */
-struct dog {
+struct dog
+{
 	char *name;
 	float age;
 	char *owner;
