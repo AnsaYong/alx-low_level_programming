@@ -1,3 +1,6 @@
+#include <stddef.h>
+#include <stdlib.h>
+
 /**
  * print_name - prints a persons name by calling a
  * helper function using function pointers
