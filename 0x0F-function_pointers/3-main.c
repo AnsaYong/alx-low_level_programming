@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 
 	/*perform the specified operation */
 	result = op_ptr(atoi(argv[1]), atoi(argv[3]));
-	
+
 	printf("%d\n", result);
 
 	return (0);
