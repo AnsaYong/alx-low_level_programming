@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 		exit(2);
 	}
 
-	/* open the compiled executable file in binary */
+	/* open the compiled executable file */
 	main_ptr = (unsigned char *)main;
 	i = 0;
 	while (i < numb_bytes)
