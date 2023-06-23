@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include <string.h>
 
 /**
  * print_all - prints anything
@@ -9,18 +10,28 @@
  */
 void print_all(const char * const format, ...)
 {
-	int i = 0;
+	int i = 0, j, is_arg;
 	char c_arg;
 	int i_arg;
 	float f_arg;
 	char *s_arg;
+	char args[] = {'c', 'i', 'f', 's'};
 	va_list all_args;
 
 	va_start(all_args, format);
 	while ((format != NULL) && (format[i] != '\0'))
 	{
-		if (i > 0)
-			printf(", ");
+		j = 0;
+		is_arg = 0;
+		while (args[j])
+		{
+			if (format[i] == args[j])
+			{
+				is_arg = 1;
+				break;
+			}
+			j++;
+		}
 		switch (format[i])
 		{
 			case 'c':
@@ -46,6 +57,8 @@ void print_all(const char * const format, ...)
 			default:
 				break;
 		}
+		if ((format[i + 1] != '\0') && (is_arg != 0))
+			printf(", ");
 		i++;
 	}
 	va_end(all_args);
