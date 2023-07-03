@@ -1,5 +1,7 @@
 #include "lists.h"
 
+size_t listint_len(const listint_t *h);
+
 /**
  * get_nodeint_at_index - returns the nth node of a listint_t linked list
  * @head: pointer to the start of the linked list
@@ -11,18 +13,17 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
 	listint_t *temp;
 	unsigned int n = 0;
-	size_t elts = listint_len(head);
 
 	if (head == NULL)
-		return (NULL);
-
-	if (elts >= index)
 		return (NULL);
 
 	temp = head;
 	while (n < index)
 	{
-		temp = temp->next;
+		if (temp == NULL)
+			return (NULL);
+		else
+			temp = temp->next;
 		n++;
 	}
 	return (temp);
