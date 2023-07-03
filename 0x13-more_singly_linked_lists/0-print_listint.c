@@ -14,13 +14,6 @@ size_t print_listint(const listint_t *h)
 	if (h == NULL)
 		return (0);
 
-	temp = malloc(sizeof(listint_t));
-	if (temp == NULL)
-	{
-		printf("Error\n");
-		return (-1);
-	}
-
 	temp = h;
 	while (temp != NULL)
 	{
