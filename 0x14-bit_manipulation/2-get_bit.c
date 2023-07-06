@@ -10,6 +10,9 @@ unsigned int no_of_bits(unsigned int n)
 {
 	unsigned int count = 0;
 
+	if (n == 0 || n == 1)
+		return (1);
+
 	while (n)
 	{
 		count++;
