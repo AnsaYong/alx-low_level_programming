@@ -39,6 +39,7 @@ void numb_to_bin(int arr[], unsigned long int n, int bit_count)
 	if (n == 1)
 	{
 		arr[0] = 1;
+		return;
 	}
 
 	j = bit_count - 1;
