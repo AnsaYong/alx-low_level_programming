@@ -67,11 +67,6 @@ int get_bit(unsigned long int n, unsigned int index)
 	int int_arr[SIZE];
 	unsigned int bit_count, val_index, j, i = 0;
 
-	if (n < 0)
-	{
-		return (-1);
-	}
-
 	bit_count = no_of_bits(n);
 	if (index >= bit_count)
 	{
