@@ -16,10 +16,13 @@ int create_file(const char *filename, char *text_content)
 		return (-1);
 
 	/* determine tthe string length */
-	while (text_content[i] != '\0')
+	if (text_content != NULL)
 	{
-		len++;
-		i++;
+		while (text_content[i] != '\0')
+		{
+			len++;
+			i++;
+		}
 	}
 
 	/* open / create the file */
@@ -29,10 +32,13 @@ int create_file(const char *filename, char *text_content)
 
 	/* use write() to copy text_content */
 	if (text_content != NULL)
+	{
 		lett_c = write(fd, text_content, len);
-
-	if (lett_c != len)
-		return (-1);
+		if (lett_c == -1)
+		{
+			close(fd);
+			return (-1);
+		}
 
 	close(fd);
 
