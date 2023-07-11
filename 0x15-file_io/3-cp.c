@@ -11,8 +11,6 @@ size_t copy_file(const char *filename1, const char *filename2);
  */
 int main(int argc, char *argv[])
 {
-	/* int res;*/
-
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
@@ -35,6 +33,8 @@ size_t copy_file(const char *file_from, const char *file_to)
 {
 	int fd_from, fd_to, fd_from_close, fd_to_close;
 	ssize_t bytes_read, bytes_written;
+	size_t total_bytes_written = 0;
+	ssize_t total_bytes_written_this_iter;
 	char buffer[1024];
 
 	/* open file to read from */
@@ -58,14 +58,27 @@ size_t copy_file(const char *file_from, const char *file_to)
 	/* in each read loop, write to file_to */
 	while ((bytes_read = read(fd_from, buffer, sizeof(buffer))) > 0)
 	{
-		bytes_written = write(fd_to, buffer, bytes_read);
-		if (bytes_written == -1)
+		total_bytes_written_this_iter = 0;
+		while (total_bytes_written_this_iter < bytes_read)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
-			fd_from_close = close(fd_from);
-			fd_to_close = close(fd_to);
-			exit(99);
+			bytes_written = write(fd_to, buffer + total_bytes_written_this_iter,
+					bytes_read - total_bytes_written_this_iter);
+			if (bytes_written == -1)
+			{
+				dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+				fd_from_close = close(fd_from);
+				fd_to_close = close(fd_to);
+				exit(99);
+			}
+			total_bytes_written += bytes_written;
+			total_bytes_written_this_iter += bytes_written;
 		}
+	}
+
+	if (bytes_read == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
+		exit(98);
 	}
 
 	/* close both files */
@@ -82,5 +95,5 @@ size_t copy_file(const char *file_from, const char *file_to)
 		exit(100);
 	}
 
-	return (0);
+	return (total_bytes_written);
 }
