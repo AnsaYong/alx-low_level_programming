@@ -21,10 +21,6 @@ int main(int argc, char *argv[])
 
 	copy_file(argv[1], argv[2]);
 
-	/* res = copy_file(av[1], av[2]);
-	 * dprintf("STDOUT_FILENO, "-> %i)\n", res);
-	 */
-
 	return (0);
 }
 
@@ -50,7 +46,8 @@ size_t copy_file(const char *file_from, const char *file_to)
 	}
 
 	/* open/create file to write to */
-	fd_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+	fd_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR
+			| S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (fd_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
@@ -67,7 +64,7 @@ size_t copy_file(const char *file_from, const char *file_to)
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			fd_from_close = close(fd_from);
 			fd_to_close = close(fd_to);
-			exit (99);
+			exit(99);
 		}
 	}
 
