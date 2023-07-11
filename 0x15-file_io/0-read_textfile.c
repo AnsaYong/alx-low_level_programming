@@ -35,7 +35,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	/* then write chars stored in the buffer to stdout */
 	lett_w = write(STDOUT_FILENO, rd, lett_r);
-	if ((lett_w != lett_r) || lett_w != letters)
+	if (lett_w != lett_r)
 		return (0);
 
 	free(rd);
