@@ -10,7 +10,7 @@
 int create_file(const char *filename, char *text_content)
 {
 	int fd, i = 0;
-	size_t lett_c, len = 0;
+	int lett_c, len = 0;
 
 	if (filename == NULL)
 		return (-1);
@@ -39,6 +39,7 @@ int create_file(const char *filename, char *text_content)
 			close(fd);
 			return (-1);
 		}
+	}
 
 	close(fd);
 
