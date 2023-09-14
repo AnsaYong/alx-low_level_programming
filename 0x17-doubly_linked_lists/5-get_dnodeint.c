@@ -18,7 +18,7 @@ dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 	/* find the node at index */
 	while (i < index)
 	{
-		/* check if end of list */
+		/* check if end of list and by extension whether idx is out of bounds */
 		if (temp->next == NULL)
 			return (NULL);
 		/* continue otherwise */
