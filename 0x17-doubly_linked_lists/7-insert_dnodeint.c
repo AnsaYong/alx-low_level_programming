@@ -15,17 +15,14 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	dlistint_t *next_node;
 	dlistint_t *new_node;
 	unsigned int i = 0;
-
 	/* create new node and add its data */
 	new_node = malloc(sizeof(dlistint_t));
 	if (new_node == NULL)
 		return (NULL);
 	new_node->n = n;
-
 	/* remember you don't have to mess with the head */
 	prev_node = *h;
 	next_node = prev_node->next;
-
 	/* find the given index */
 	while (i < idx)
 	{
@@ -36,7 +33,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		next_node = prev_node->next;
 		i++;
 	}
-
 	/* check if end of list */
 	if (next_node == NULL)
 	{
