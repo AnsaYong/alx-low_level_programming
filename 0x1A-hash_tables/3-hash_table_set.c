@@ -10,12 +10,11 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *hash_node;
-	hash_node_t *current;
+	hash_node_t *hash_node, *current;
 	unsigned long int idx;
 	const unsigned char *unsigned_key = (const unsigned char *)key;
 
-	if (strcmp(key, "") == 0)
+	if (ht == NULL || key == NULL || strcmp(key, "") == 0)
 		return (EXIT_FAILURE);
 	/* 1. Create hash node */
 	hash_node = create_hash_node(key, value);
