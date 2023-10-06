@@ -6,7 +6,7 @@
  */
 void hash_table_print(const hash_table_t *ht)
 {
-	long unsigned int i;
+	unsigned long int i;
 	hash_node_t *current;
 	int first_pair = 1; /* To keep track of the first key-value pair */
 
