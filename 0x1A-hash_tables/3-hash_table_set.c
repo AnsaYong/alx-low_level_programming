@@ -13,35 +13,41 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *hash_node;
 	hash_node_t *current;
 	unsigned long int idx;
-
 	const unsigned char *unsigned_key = (const unsigned char *)key;
 
 	if (strcmp(key, "") == 0)
-		return (0);
-
+		return (EXIT_FAILURE);
 	/* 1. Create hash node */
 	hash_node = create_hash_node(key, value);
 	if (hash_node == NULL)
-		return (0);
-
+		return (EXIT_FAILURE);
 	/* 2. find the appropriate index using the hash function */
 	idx = key_index(unsigned_key, ht->size);
-
 	/* 3. check if there already is data at the provided hash table index */
 	current = ht->array[idx];
 	if (current == NULL)
+		ht->array[idx] = hash_node;	/* key does not exist so insert directly */
+	else	/* handle collision */
 	{
-		/* key does not exist so insert directly */
-		ht->array[idx] = hash_node;
-	}
-	else
-	{
-		/* handle collision - add the new node at the beginning of the list */
-		hash_node->next = current;	/* make new node point to current head */
-		ht->array[idx]->next = hash_node;	/* update head to be the new node */
+		while (current != NULL)
+		{
+			if (strcmp((const char *)current->key, key) == 0)
+			{
+				/* Key already exists, update the value */
+				free(hash_node->value); /* Free the old value */
+				current->value = strdup(value); /* Update with the new value */
+				free(hash_node->key); /* Free the key of the new node (not needed) */
+				free(hash_node); /* Free the new node */
+				return (EXIT_SUCCESS);
+			}
+			current = current->next;
+		}
+		/* If key does not exist, add the new node at the beginning */
+		hash_node->next = ht->array[idx];	/* new node to current head */
+		ht->array[idx] = hash_node;	/* update head to be the new node */
 	}
 
-	return (1);
+	return (EXIT_SUCCESS);
 }
 
 /**
