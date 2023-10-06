@@ -66,23 +66,20 @@ hash_node_t *create_hash_node(const char *key, const char *value)
 	if (hash_node == NULL)
 		return (NULL);
 
-	hash_node->key = malloc(strlen(key) + 1);
+	hash_node->key = strdup(key);
 	if (hash_node->key == NULL)
 	{
 		free(hash_node);
 		return (NULL);
 	}
 
-	hash_node->value = malloc(strlen(value) + 1);
+	hash_node->value = (value != NULL) ? strdup(value) : strdup("");
 	if (hash_node->value == NULL)
 	{
+		free(hash_node->key);
 		free(hash_node);
 		return	(NULL);
 	}
-
-	/* populate the created hash node */
-	strcpy(hash_node->key, key);
-	strcpy(hash_node->value, value);
 
 	hash_node->next = NULL;
 
