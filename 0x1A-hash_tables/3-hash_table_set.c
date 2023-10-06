@@ -44,7 +44,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		}
 		/* If key does not exist, add the new node at the beginning */
 		hash_node->next = ht->array[idx];	/* new node to current head */
-		ht->array[idx] = hash_node;	/* update head to be the new node */
+		ht->array[idx]->next = hash_node;	/* update head to be the new node */
 	}
 
 	return (EXIT_SUCCESS);
