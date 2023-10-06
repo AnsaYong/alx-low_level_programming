@@ -10,41 +10,42 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *hash_node, *current;
+	hash_node_t *new_node, *current;
 	unsigned long int idx;
 	const unsigned char *unsigned_key = (const unsigned char *)key;
 
 	if (ht == NULL || key == NULL || strcmp(key, "") == 0)
 		return (EXIT_FAILURE);
+
 	/* 1. Create hash node */
-	hash_node = create_hash_node(key, value);
-	if (hash_node == NULL)
+	new_node = create_hash_node(key, value);
+	if (new_node == NULL)
 		return (EXIT_FAILURE);
+
 	/* 2. find the appropriate index using the hash function */
 	idx = key_index(unsigned_key, ht->size);
 	/* 3. check if there already is data at the provided hash table index */
 	current = ht->array[idx];
-	if (current == NULL)
-		ht->array[idx] = hash_node;	/* key does not exist so insert directly */
-	else	/* handle collision */
+	while (current != NULL)
 	{
-		while (current != NULL)
+		if (strcmp(current->key, key) == 0)
 		{
-			if (strcmp((const char *)current->key, key) == 0)
-			{
-				/* Key already exists, update the value */
-				free(hash_node->value); /* Free the old value */
-				current->value = strdup(value); /* Update with the new value */
-				free(hash_node->key); /* Free the key of the new node (not needed) */
-				free(hash_node); /* Free the new node */
-				return (EXIT_SUCCESS);
-			}
-			current = current->next;
+			/* Key already exists, update the value */
+			free(current->value); /* Free the old value */
+			current->value = strdup(value); /* Update with the new value */
+			if (current->value == NULL)
+				return (EXIT_FAILURE);
+			free(new_node->key); /* Free new node's key (not needed) */
+			free(new_node->value);
+			free(new_node); /* Free the new node */
+			return (EXIT_SUCCESS);
 		}
-		/* If key does not exist, add the new node at the beginning */
-		hash_node->next = ht->array[idx];	/* new node to current head */
-		ht->array[idx]->next = hash_node;	/* update head to be the new node */
+		current = current->next;
 	}
+
+	/* If key does not exist, add the new node at the beginning */
+	new_node->next = ht->array[idx];	/* new node to current head */
+	ht->array[idx] = new_node;	/* update head to be the new node */
 
 	return (EXIT_SUCCESS);
 }
