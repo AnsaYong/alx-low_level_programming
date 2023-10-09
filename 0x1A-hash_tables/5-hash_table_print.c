@@ -10,9 +10,12 @@ void hash_table_print(const hash_table_t *ht)
 	hash_node_t *current;
 	int first_pair = 1; /* To keep track of the first key-value pair */
 
+	if (ht == NULL)
+		return;
+
 	printf("{");
 
-	if (ht == NULL || ht->array == NULL)
+	if (ht->array == NULL)
 	{
 		printf("}\n");
 		return;
