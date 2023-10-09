@@ -15,12 +15,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	const unsigned char *unsigned_key = (const unsigned char *)key;
 
 	if (ht == NULL || key == NULL || strcmp(key, "") == 0)
-		return (EXIT_FAILURE);
+		return (0);
 
 	/* 1. Create hash node */
 	new_node = create_hash_node(key, value);
 	if (new_node == NULL)
-		return (EXIT_FAILURE);
+		return (0);
 
 	/* 2. find the appropriate index using the hash function */
 	idx = key_index(unsigned_key, ht->size);
@@ -34,11 +34,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			free(current->value); /* Free the old value */
 			current->value = strdup(value); /* Update with the new value */
 			if (current->value == NULL)
-				return (EXIT_FAILURE);
+				return (0);
 			free(new_node->key); /* Free new node's key (not needed) */
 			free(new_node->value);
 			free(new_node); /* Free the new node */
-			return (EXIT_SUCCESS);
+			return (1);
 		}
 		current = current->next;
 	}
@@ -47,7 +47,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new_node->next = ht->array[idx];	/* new node to current head */
 	ht->array[idx] = new_node;	/* update head to be the new node */
 
-	return (EXIT_SUCCESS);
+	return (1);
 }
 
 /**
