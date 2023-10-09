@@ -14,6 +14,9 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	const unsigned char *unsigned_key = (const unsigned char *)key;
 
+	if (ht == NULL)
+		return (NULL);
+
 	/* 1. get the required index */
 	idx = key_index(unsigned_key, ht->size);
 
