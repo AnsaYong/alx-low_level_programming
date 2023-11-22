@@ -1,0 +1,40 @@
+ # Define compiler
+CC = gcc
+
+# Define the source files
+SRC = main.c school.c
+
+# Define the object files
+OBJ = $(SRC:.c=.o)
+
+# Name of the executable
+NAME = school
+
+# Define the temp files to be deleted - temp file patterns for Emacs and Vim
+RM = *~ *.swp
+
+# Set the rule that builds the executable
+all: $(NAME)
+
+# Rule to build object files from source files
+%.o: %.c
+	$(CC) -c $< -o $@
+
+# Rule to build the executable from object files
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+# Rule to delete all Emacs and Vim temporary files along with the executable
+clean:
+	rm -f $(RM) $(NAME)
+
+# Rule to delete all object files
+oclean:
+	rm -f $(OBJ)
+
+# Rule to remove all Emacs, Vim temp files, the executable, and the object files
+fclean:
+	rm -f $(RM) $(NAME) $(OBJ)
+
+# Rule to force recompilation of all source files
+re: fclean all
