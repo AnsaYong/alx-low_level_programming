@@ -1,4 +1,4 @@
-# Define compiler
+ # Define compiler
 CC = gcc
 
 # Define the source files
@@ -10,3 +10,7 @@ all: school
 # Compile the source code and create the executable
 school: $(SRC)
 	$(CC) $(SRC) -o school
+
+# Clean up generated files
+clean:
+	rm -rf school
