@@ -1,0 +1,34 @@
+# Define compiler and flags
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# Define the source files
+SRC = main.c school.c
+
+# Name of the executable
+NAME = school
+
+# Set the rule that builds the executable
+all: $(NAME)
+
+# Rule to build the executable from source files
+$(NAME): $(SRC:%.c=%.o)
+	$(CC) $(filter %.o,$^) -o $@ $(filter-out %.o,$^)
+
+# Rule to delete all Emacs and Vim temporary files along with the executable
+clean:
+	$(RM) *~ *.swp $(NAME)
+
+# Rule to delete all object files
+oclean:
+	$(RM) $(SRC:%.c=%.o)
+
+# Rule to remove all Emacs, Vim temp files, the executable, and the object files
+fclean: oclean clean
+
+# Rule to force recompilation of all source files
+re: fclean all
+
+# Dependency rule to ensure that the source files are compiled if m.h is modified
+$(SRC:%.c=%.o): %.o: %.c m.h
+	$(CC) $(filter %.o,$^) -c -o $@
