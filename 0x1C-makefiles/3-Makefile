@@ -10,8 +10,8 @@ OBJ = $(SRC:.c=.o)
 # Name of the executable
 NAME = school
 
-# Define the temp files to be deleted - temp file patterns for Emacs and Vim
-RM = *~*.swp
+# Define the program to delete files
+RM = rm -f
 
 # Set the rule that builds the executable
 all: $(NAME)
@@ -26,11 +26,11 @@ $(NAME): $(OBJ)
 
 # Rule to delete all Emacs and Vim temporary files along with the executable
 clean:
-	rm -f $(RM) $(NAME)
+	$(RM) *~ *.swp $(NAME)
 
 # Rule to delete all object files
 oclean:
-	rm -f $(OBJ)
+	$(RM) $(OBJ)
 
 # Rule to remove all Emacs, Vim temp files, the executable, and the object files
 fclean:	oclean clean
