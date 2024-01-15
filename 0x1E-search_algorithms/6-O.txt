@@ -1,0 +1,13 @@
+The space complexity of the allocate_map function is O(n * m). Let's break down the space usage in this function:
+
+The first malloc call allocates memory for an array of n integer pointers (int *), which requires n * sizeof(int *) bytes.
+
+The loop inside the function allocates memory for each row of the 2D array. For each of the n rows, it uses m * sizeof(int) bytes.
+
+Therefore, the total space complexity is the sum of these two components:
+
+O(n * sizeof(int *)) + O(n * m * sizeof(int))
+
+
+Since we are concerned with the dominant term, we can simplify this to O(n*m).
+This represents the space complexity of the function in terms of the total number of elements in the 2D array.
